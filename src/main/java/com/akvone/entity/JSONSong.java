@@ -3,45 +3,46 @@ package com.akvone.entity;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class JSONSong {
-    @JsonProperty("aid")
-    private Long id;
 
-    @JsonProperty("artist")
-    private String singer;
+  @JsonProperty("aid")
+  private Long id;
 
-    @JsonProperty("genre")
-    private String styleName;
+  @JsonProperty("artist")
+  private String singer;
 
-    public Long getId() {
-        return id;
-    }
+  @JsonProperty("genre")
+  private String styleName;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public String getSinger() {
-        return singer;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
+  public String getSinger() {
+    return singer;
+  }
 
-    public String getStyleName() {
-        return styleName;
-    }
+  public void setSinger(String singer) {
+    this.singer = singer;
+  }
 
-    public void setStyleName(String styleName) {
-        this.styleName = styleName;
-    }
+  public String getStyleName() {
+    return styleName;
+  }
 
-    @Override
-    public String toString() {
-        return "JSONSong{" +
-                "id=" + id +
-                ", singer='" + singer + '\'' +
-                ", styleName='" + styleName + '\'' +
-                '}';
-    }
+  public void setStyleName(String styleName) {
+    this.styleName = styleName;
+  }
+
+  @Override
+  public String toString() {
+    return "JSONSong{" +
+        "id=" + id +
+        ", singer='" + singer + '\'' +
+        ", styleName='" + styleName + '\'' +
+        '}';
+  }
 }

@@ -1,80 +1,95 @@
 package com.akvone.entity;
 
-import javax.persistence.*;
 import java.io.Serializable;
+import javax.persistence.Basic;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "USERS", schema = "musicDB", catalog = "")
 public class User implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id", nullable = false)
+  private Long id;
 
-    @Basic
-    @Column(name = "vk_id", nullable = false, unique = true)
-    private Long vkId;
+  @Basic
+  @Column(name = "vk_id", nullable = false, unique = true)
+  private Long vkId;
 
-    @Basic
-    @Column(name = "xcoord")
-    private float x;
+  @Basic
+  @Column(name = "xcoord")
+  private float x;
 
-    @Basic
-    @Column(name = "ycoord")
-    private float y;
+  @Basic
+  @Column(name = "ycoord")
+  private float y;
 
-    public User(){}
+  public User() {
+  }
 
-    public Long getId() {
-        return id;
+  public Long getId() {
+    return id;
+  }
+
+  public void setId(Long id) {
+    this.id = id;
+  }
+
+  public Long getVkId() {
+    return vkId;
+  }
+
+  public void setVkId(Long vkId) {
+    this.vkId = vkId;
+  }
+
+  public float getX() {
+    return x;
+  }
+
+  public float getY() {
+    return x;
+  }
+
+  public void setX(float x) {
+    this.x = x;
+  }
+
+  public void setY(float y) {
+    this.y = y;
+  }
+
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) {
+      return true;
+    }
+    if (o == null || getClass() != o.getClass()) {
+      return false;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    User that = (User) o;
+
+    if (id != null ? !id.equals(that.id) : that.id != null) {
+      return false;
+    }
+    if (vkId != null ? !vkId.equals(that.vkId) : that.vkId != null) {
+      return false;
     }
 
-    public Long getVkId() {
-        return vkId;
-    }
+    return true;
+  }
 
-    public void setVkId(Long vkId) {
-        this.vkId = vkId;
-    }
-
-    public float getX() {
-        return x;
-    }
-
-    public float getY() {
-        return x;
-    }
-
-    public void setX(float x) {
-        this.x = x;
-    }
-
-    public void setY(float y) {
-        this.y = y;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User that = (User) o;
-
-        if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (vkId != null ? !vkId.equals(that.vkId) : that.vkId != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = vkId != null ? vkId.hashCode() : 0;
-        result = 3517 * result + (id != null ? id.hashCode() : 0);
-        return result;
-    }
+  @Override
+  public int hashCode() {
+    int result = vkId != null ? vkId.hashCode() : 0;
+    result = 3517 * result + (id != null ? id.hashCode() : 0);
+    return result;
+  }
 }

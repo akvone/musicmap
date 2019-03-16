@@ -4,6 +4,6 @@ import com.akvone.entity.Location;
 
 public interface LocationService {
 
-    Location getById(Long id);
+  Location getById(Long id);
 
 }

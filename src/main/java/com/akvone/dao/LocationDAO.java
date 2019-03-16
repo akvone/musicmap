@@ -4,6 +4,6 @@ import com.akvone.entity.Location;
 
 public interface LocationDAO {
 
-    Location getById(Long id);
+  Location getById(Long id);
 
 }

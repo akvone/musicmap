@@ -4,6 +4,6 @@ import com.akvone.entity.Style;
 
 public interface StyleService {
 
-    Style getById(Long id);
+  Style getById(Long id);
 
 }

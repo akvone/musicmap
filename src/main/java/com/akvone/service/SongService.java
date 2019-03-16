@@ -6,6 +6,6 @@ import com.akvone.entity.Style;
 
 public interface SongService {
 
-    Song add(Long vkId, Singer singer, Style style);
+  Song add(Long vkId, Singer singer, Style style);
 
 }

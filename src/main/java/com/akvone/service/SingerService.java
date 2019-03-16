@@ -4,6 +4,6 @@ import com.akvone.entity.Singer;
 
 public interface SingerService {
 
-    Singer add(String name);
+  Singer add(String name);
 
 }

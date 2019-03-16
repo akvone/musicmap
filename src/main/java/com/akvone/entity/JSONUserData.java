@@ -1,73 +1,73 @@
 package com.akvone.entity;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 
 public class JSONUserData {
-    @JsonProperty("userID")
-    private String vkIdLine;
 
-    @JsonProperty("x")
-    private Float x;
+  @JsonProperty("userID")
+  private String vkIdLine;
 
-    @JsonProperty("y")
-    private Float y;
+  @JsonProperty("x")
+  private Float x;
 
-    @JsonProperty("locationID")
-    private Long locationId;
+  @JsonProperty("y")
+  private Float y;
 
-    @JsonProperty("audios")
-    private List<JSONSong> songs;
+  @JsonProperty("locationID")
+  private Long locationId;
 
-    public Float getX() {
-        return x;
-    }
+  @JsonProperty("audios")
+  private List<JSONSong> songs;
 
-    public void setX(Float x) {
-        this.x = x;
-    }
+  public Float getX() {
+    return x;
+  }
 
-    public Float getY() {
-        return y;
-    }
+  public void setX(Float x) {
+    this.x = x;
+  }
 
-    public void setY(Float y) {
-        this.y = y;
-    }
+  public Float getY() {
+    return y;
+  }
 
-    public Long getLocationId() {
-        return locationId;
-    }
+  public void setY(Float y) {
+    this.y = y;
+  }
 
-    public void setLocationId(Long locationId) {
-        this.locationId = locationId;
-    }
+  public Long getLocationId() {
+    return locationId;
+  }
 
-    public String getVkIdLine() {
-        return vkIdLine;
-    }
+  public void setLocationId(Long locationId) {
+    this.locationId = locationId;
+  }
 
-    public void setVkIdLine(String vkIdLine) {
-        this.vkIdLine = vkIdLine;
-    }
+  public String getVkIdLine() {
+    return vkIdLine;
+  }
 
-    public List<JSONSong> getSongs() {
-        return songs;
-    }
+  public void setVkIdLine(String vkIdLine) {
+    this.vkIdLine = vkIdLine;
+  }
 
-    public void setSongs(List<JSONSong> songs) {
-        this.songs = songs;
-    }
+  public List<JSONSong> getSongs() {
+    return songs;
+  }
 
-    @Override
-    public String toString() {
-        return "JSONUserData{" +
-                "vkIdLine='" + vkIdLine + '\'' +
-                ", x=" + x +
-                ", y=" + y +
-                ", locationId=" + locationId +
-                ", songs=" + songs +
-                '}';
-    }
+  public void setSongs(List<JSONSong> songs) {
+    this.songs = songs;
+  }
+
+  @Override
+  public String toString() {
+    return "JSONUserData{" +
+        "vkIdLine='" + vkIdLine + '\'' +
+        ", x=" + x +
+        ", y=" + y +
+        ", locationId=" + locationId +
+        ", songs=" + songs +
+        '}';
+  }
 }

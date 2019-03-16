@@ -4,8 +4,8 @@ import com.akvone.entity.Style;
 
 public interface StyleDAO {
 
-    Style getById(Long id);
+  Style getById(Long id);
 
-    boolean exists(Long id);
+  boolean exists(Long id);
 
 }

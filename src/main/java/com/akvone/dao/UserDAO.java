@@ -4,10 +4,10 @@ import com.akvone.entity.User;
 
 public interface UserDAO {
 
-    void save(User user);
+  void save(User user);
 
-    boolean exists(Long vkId);
+  boolean exists(Long vkId);
 
-    User getByVkId(Long vkId);
+  User getByVkId(Long vkId);
 
 }
