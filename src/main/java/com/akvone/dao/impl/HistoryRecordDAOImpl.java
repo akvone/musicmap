@@ -1,9 +1,5 @@
 package com.akvone.dao.impl;
 
-/**
- * Created by nikitafedorovv on 15/11/2016.
- */
-
 import com.akvone.dao.HistoryRecordDAO;
 import com.akvone.entity.HistoryRecord;
 import com.akvone.entity.Location;

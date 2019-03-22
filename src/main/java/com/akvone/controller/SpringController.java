@@ -3,52 +3,47 @@ package com.akvone.controller;
 import com.akvone.entity.JSONUserData;
 import com.akvone.service.HistoryRecordService;
 import com.akvone.service.RouterService;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+@Slf4j
 @Controller
 @RequestMapping("")
 @Validated
+@RequiredArgsConstructor
 public class SpringController {
 
-  @Autowired
-  private HistoryRecordService historyRecordService;
+  private final HistoryRecordService historyRecordService;
+  private final RouterService routerService;
 
-  @Autowired
-  private RouterService routerService;
-
-  @RequestMapping(value = "/start", method = RequestMethod.GET)
-  public String sendStartPage(Model model) {
+  @GetMapping("/start")
+  public String sendStartPage() {
     return "start";
   }
 
-  @PostMapping(value = "/add_user")
+  @PostMapping("/add_user")
   public ResponseEntity receiveJSONUserData(@RequestBody JSONUserData jsonUserData) {
-
-//        long time = System.currentTimeMillis();
-
+    log.debug("Received from client: {}", jsonUserData);
     routerService.route(jsonUserData);
-    System.out.println("Received from client: " + jsonUserData);
-
-//        System.out.println();
-//        System.out.println(System.currentTimeMillis() - time + " ms");
 
     return new ResponseEntity(jsonUserData, HttpStatus.OK);
   }
 
-  @RequestMapping(value = {"/regStat"}, method = RequestMethod.GET)
+  @GetMapping("/regStat")
   @ResponseBody
-  public String search(@RequestParam("locationId") Long locationId, ModelMap model) {
-    //model.addAttribute("userCount",historyRecordService.getUserCountByLocationId(locationId));
-    //model.addAttribute("genreTop", historyRecordService.getStyleTop(locationId));
+  public String search(@RequestParam("locationId") Long locationId) {
     JSONObject jsonObject = new JSONObject();
     jsonObject.put("userCount", historyRecordService.getUserCountByLocationId(locationId));
     JSONArray jsonArray = new JSONArray();
