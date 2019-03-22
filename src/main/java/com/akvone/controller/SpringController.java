@@ -1,14 +1,12 @@
 package com.akvone.controller;
 
-import com.akvone.entity.JSONUserData;
+import com.akvone.dto.JSONUserData;
 import com.akvone.service.HistoryRecordService;
 import com.akvone.service.RouterService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -34,11 +32,9 @@ public class SpringController {
   }
 
   @PostMapping("/add_user")
-  public ResponseEntity receiveJSONUserData(@RequestBody JSONUserData jsonUserData) {
+  public void receiveJSONUserData(@RequestBody JSONUserData jsonUserData) {
     log.debug("Received from client: {}", jsonUserData);
     routerService.route(jsonUserData);
-
-    return new ResponseEntity(jsonUserData, HttpStatus.OK);
   }
 
   @GetMapping("/regStat")

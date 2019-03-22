@@ -1,8 +1,8 @@
 package com.akvone.service.impl;
 
 import com.akvone.entity.HistoryRecord;
-import com.akvone.entity.JSONSong;
-import com.akvone.entity.JSONUserData;
+import com.akvone.dto.JSONSong;
+import com.akvone.dto.JSONUserData;
 import com.akvone.entity.Location;
 import com.akvone.entity.Singer;
 import com.akvone.entity.Song;
@@ -18,30 +18,20 @@ import com.akvone.service.UserService;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
+@RequiredArgsConstructor
 public class RouterServiceImpl implements RouterService {
 
-  @Autowired
-  private UserService userService;
-
-  @Autowired
-  private LocationService locationService;
-
-  @Autowired
-  private StyleService styleService;
-
-  @Autowired
-  private SingerService singerService;
-
-  @Autowired
-  private SongService songService;
-
-  @Autowired
-  private HistoryRecordService historyRecordService;
+  private final UserService userService;
+  private final LocationService locationService;
+  private final StyleService styleService;
+  private final SingerService singerService;
+  private final SongService songService;
+  private final HistoryRecordService historyRecordService;
 
   @Transactional
   public Set<HistoryRecord> route(JSONUserData jsonUserData) {
