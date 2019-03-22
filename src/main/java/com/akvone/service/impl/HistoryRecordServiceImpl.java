@@ -7,15 +7,15 @@ import com.akvone.entity.Song;
 import com.akvone.entity.User;
 import com.akvone.service.HistoryRecordService;
 import java.util.List;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 
 @Service
+@RequiredArgsConstructor
 public class HistoryRecordServiceImpl implements HistoryRecordService {
 
-  @Autowired
-  private HistoryRecordDAO historyRecordDAO;
+  private final HistoryRecordDAO historyRecordDAO;
 
   @Override
   public HistoryRecord add(User user, Song song, Location location) {

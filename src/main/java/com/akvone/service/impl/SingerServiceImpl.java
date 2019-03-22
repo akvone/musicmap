@@ -3,14 +3,14 @@ package com.akvone.service.impl;
 import com.akvone.dao.SingerDAO;
 import com.akvone.entity.Singer;
 import com.akvone.service.SingerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SingerServiceImpl implements SingerService {
 
-  @Autowired
-  private SingerDAO singerDAO;
+  private final SingerDAO singerDAO;
 
   public Singer add(String name) {
     Singer singer;

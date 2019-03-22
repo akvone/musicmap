@@ -2,20 +2,20 @@ package com.akvone.dao.impl;
 
 import com.akvone.dao.SongDAO;
 import com.akvone.entity.Song;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
+@RequiredArgsConstructor
 public class SongDAOImpl implements SongDAO {
 
-  @Autowired
-  private SessionFactory sessionFactory;
+  private final SessionFactory sessionFactory;
 
   @Override
   public void save(Song song) {

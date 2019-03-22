@@ -3,14 +3,14 @@ package com.akvone.service.impl;
 import com.akvone.dao.UserDAO;
 import com.akvone.entity.User;
 import com.akvone.service.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  @Autowired
-  private UserDAO userDAO;
+  private final UserDAO userDAO;
 
   @Override
   public User add(Long vkId, float x, float y) {

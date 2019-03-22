@@ -5,14 +5,14 @@ import com.akvone.entity.Singer;
 import com.akvone.entity.Song;
 import com.akvone.entity.Style;
 import com.akvone.service.SongService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class SongServiceImpl implements SongService {
 
-  @Autowired
-  private SongDAO songDAO;
+  private final SongDAO songDAO;
 
   @Override
   public Song add(Long vkId, Singer singer, Style style) {

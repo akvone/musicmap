@@ -3,14 +3,14 @@ package com.akvone.service.impl;
 import com.akvone.dao.StyleDAO;
 import com.akvone.entity.Style;
 import com.akvone.service.StyleService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 @Service
+@RequiredArgsConstructor
 public class StyleServiceImpl implements StyleService {
 
-  @Autowired
-  private StyleDAO styleDAO;
+  private final StyleDAO styleDAO;
 
   @Override
   public Style getById(Long id) {

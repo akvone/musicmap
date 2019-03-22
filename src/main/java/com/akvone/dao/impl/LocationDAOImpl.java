@@ -2,20 +2,20 @@ package com.akvone.dao.impl;
 
 import com.akvone.dao.LocationDAO;
 import com.akvone.entity.Location;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
+@RequiredArgsConstructor
 public class LocationDAOImpl implements LocationDAO {
 
-  @Autowired
-  private SessionFactory sessionFactory;
+  private final SessionFactory sessionFactory;
 
   @Override
   public Location getById(Long id) {

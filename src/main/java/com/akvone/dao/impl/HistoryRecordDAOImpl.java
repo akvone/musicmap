@@ -8,21 +8,21 @@ import com.akvone.entity.User;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import lombok.RequiredArgsConstructor;
 import org.hibernate.Criteria;
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 @Transactional
+@RequiredArgsConstructor
 public class HistoryRecordDAOImpl implements HistoryRecordDAO {
 
-  @Autowired
-  private SessionFactory sessionFactory;
+  private final SessionFactory sessionFactory;
 
   @Override
   public void save(HistoryRecord historyRecord) {
