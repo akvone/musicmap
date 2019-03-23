@@ -1,6 +1,7 @@
 package com.akvone.service.impl;
 
 import com.akvone.dao.HistoryRecordDAO;
+import com.akvone.dto.LocationStatistics;
 import com.akvone.entity.HistoryRecord;
 import com.akvone.entity.Location;
 import com.akvone.entity.Song;
@@ -9,6 +10,7 @@ import com.akvone.service.HistoryRecordService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
@@ -30,12 +32,12 @@ public class HistoryRecordServiceImpl implements HistoryRecordService {
   }
 
   @Override
-  public Long getUserCountByLocationId(Long locationId) {
-    return historyRecordDAO.getUserCountByLocationId(locationId);
+  @Transactional
+  public LocationStatistics getLocationStatistics(long locationId) {
+    Long userCount = historyRecordDAO.getUserCountByLocationId(locationId);
+    List<String> topStyles = historyRecordDAO.getTopStylesByLocation(locationId);
+
+    return new LocationStatistics(userCount, topStyles);
   }
 
-  @Override
-  public List<String> getStyleTop(Long locationId) {
-    return historyRecordDAO.getTopStylesByLocation(locationId);
-  }
 }

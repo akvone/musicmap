@@ -1,5 +1,7 @@
 package com.akvone.dao.impl;
 
+import static java.util.Collections.emptyList;
+
 import com.akvone.dao.HistoryRecordDAO;
 import com.akvone.entity.HistoryRecord;
 import com.akvone.entity.Location;
@@ -89,7 +91,7 @@ public class HistoryRecordDAOImpl implements HistoryRecordDAO {
       Query query = sessionFactory.getCurrentSession().createQuery(
           "select song.style.name from HistoryRecord where location.id = :locationId group by song.style.name order by count(distinct song.style.id)");
       query.setParameter("locationId", locationId);
-      return (query.list().isEmpty() ? null : query.list());
+      return (query.list().isEmpty() ? emptyList() : query.list());
     } catch (HibernateException ex) {
       return null;
     }

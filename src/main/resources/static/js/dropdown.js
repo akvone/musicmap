@@ -35,9 +35,7 @@ function changeRegionInformation(previousPolygonIndex, nextPolygonIndex) {
     setRegionInformation(locations[nextPolygonIndex].name, "Загрузка...", "Загрузка...");
     $.get("regStat", {locationId: locations[nextPolygonIndex].id}, function (data) {
         console.log(data);
-        var object = JSON.parse(data);
-        console.log(object);
-        setRegionInformation(locations[nextPolygonIndex].name, object.userCount, object.topStyles)
+        setRegionInformation(locations[nextPolygonIndex].name, data.userCount, data.topStyles)
     });
     // polygons[indexSelected].options.set('fillOpacity', 0.5);
     setPolygonColor(previousPolygonIndex, nextPolygonIndex);
