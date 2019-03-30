@@ -13,6 +13,7 @@ VK.init({
 });
 
 const DEFAULT_PAGE_SIZE = 100;
+const DEFAULT_LOCATION_ACCURACY = 1000000;
 
 $("#getAudio").click(function () {
     VK.Auth.login(function (response) {
@@ -88,7 +89,7 @@ function init() {
         }).then(function (result) {
             ;
             result.geoObjects.options.set('preset', 'islands#blueCircleIcon');
-            if (result.geoObjects.accuracy < 2000) {
+            if (result.geoObjects.accuracy < DEFAULT_LOCATION_ACCURACY) {
                 setToastText("Определили местоположение")
                 var coords = result.geoObjects.get(0).geometry.getCoordinates();
                 userInformation.x = coords[0];
