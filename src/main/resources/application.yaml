@@ -20,7 +20,7 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQLInnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL5Dialect
 
 logging:
   level:

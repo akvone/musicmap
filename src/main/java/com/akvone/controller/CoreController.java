@@ -1,9 +1,9 @@
 package com.akvone.controller;
 
-import com.akvone.dto.JSONUserData;
-import com.akvone.dto.LocationStatistics;
+import com.akvone.dto.UserDataDto;
+import com.akvone.dto.LocationStatisticsDto;
 import com.akvone.service.HistoryRecordService;
-import com.akvone.service.RouterService;
+import com.akvone.service.CoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -21,10 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("")
 @Validated
 @RequiredArgsConstructor
-public class SpringController {
+public class CoreController {
 
   private final HistoryRecordService historyRecordService;
-  private final RouterService routerService;
+  private final CoreService coreService;
 
   @GetMapping("/start")
   public String sendStartPage() {
@@ -32,16 +32,19 @@ public class SpringController {
   }
 
   @PostMapping("/add_user")
-  public void receiveJSONUserData(@RequestBody JSONUserData jsonUserData) {
-    log.debug("Received from client: {}", jsonUserData);
-    routerService.route(jsonUserData);
+  public ResponseEntity<Object> postUserData(@RequestBody UserDataDto userDataDto) {
+    log.debug("Received from client: {}", userDataDto);
+
+    coreService.handleUserData(userDataDto);
+
+    return new ResponseEntity<>(HttpStatus.OK);
   }
 
   @GetMapping("/regStat")
-  public ResponseEntity<LocationStatistics> getLocationStatistics(@RequestParam("locationId") Long locationId) {
+  public ResponseEntity<LocationStatisticsDto> getLocationStatistics(@RequestParam("locationId") Long locationId) {
     log.debug("Get request on info by {} location", locationId);
 
-    LocationStatistics stat = historyRecordService.getLocationStatistics(locationId);
+    LocationStatisticsDto stat = historyRecordService.getLocationStatistics(locationId);
 
     return new ResponseEntity<>(stat, HttpStatus.OK);
   }

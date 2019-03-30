@@ -1,8 +1,9 @@
 package com.akvone.service.impl;
 
-import com.akvone.dao.UserDAO;
-import com.akvone.entity.User;
+import com.akvone.dao.UserRepository;
+import com.akvone.entity.UserEntity;
 import com.akvone.service.UserService;
+import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +11,23 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserServiceImpl implements UserService {
 
-  private final UserDAO userDAO;
+  private final UserRepository userRepository;
 
   @Override
-  public User add(Long vkId, float x, float y) {
-    User user;
-    if (userDAO.exists(vkId)) {
-      user = userDAO.getByVkId(vkId);
+  public UserEntity createOrUpdate(Long vkId, double[] coordinates) {
+    UserEntity userEntity;
+    Optional<UserEntity> userOpt = userRepository.findById(vkId);
+
+    if (!userOpt.isPresent()) {
+      userEntity = new UserEntity();
+      userEntity.setId(vkId);
     } else {
-      user = new User();
-      user.setVkId(vkId);
+      userEntity = userOpt.get();
     }
-    user.setX(x);
-    user.setY(y);
-    userDAO.save(user);
-    return userDAO.getByVkId(vkId);
+
+    userEntity.setX(coordinates[0]);
+    userEntity.setY(coordinates[1]);
+
+    return userRepository.save(userEntity);
   }
 }

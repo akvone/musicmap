@@ -12,17 +12,21 @@ VK.init({
     apiId: 5697583
 });
 
+const DEFAULT_PAGE_SIZE = 100;
 
 $("#getAudio").click(function () {
     VK.Auth.login(function (response) {
         if (response.session) {
             /* Пользователь успешно авторизовался */
             userInformation.userID = response.session.mid;
-            VK.Api.call('audio.get',
-                {owner_id: userInformation.userID},
+            VK.Api.call('groups.get',
+                {
+                  owner_id: userInformation.userID,
+                  extended: true,
+                  v: 5.71
+                },
                 function (result) {
-                    result.response.shift();
-                    userInformation.audios = result.response;
+                    userInformation.groups = result.response.items;
                     VK.Auth.revokeGrants();
                     setToastText("Успешно получен список Ваших песен");
                     console.log(userInformation);
@@ -31,7 +35,7 @@ $("#getAudio").click(function () {
         else {
             setToastText("Отмена получения списка песен");
         }
-    }, 8);
+    }, DEFAULT_PAGE_SIZE);
 });
 
 function init() {
@@ -114,7 +118,7 @@ $("#send").click(function () {
     else if (userInformation.x == "low accuracy") {
         setToastText("Ошибка! Низкая точность местоположения");
     }
-    else if (!userInformation.audios) {
+    else if (!userInformation.groups) {
         setToastText("Ошибка! Не получен список аудизаписей");
     }
     else if (userInformation.locationID == -1) {

@@ -4,8 +4,6 @@ import java.io.Serializable;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import lombok.EqualsAndHashCode;
@@ -14,20 +12,18 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "SINGERS", schema = "musicDB", catalog = "")
+@Table(name = "user_groups", schema = "musicDB")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Singer implements Serializable {
+public class GroupEntity implements Serializable {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  @Column(name = "id", nullable = false)
   private Long id;
 
   @Basic
-  @Column(name = "name", nullable = false, unique = true, columnDefinition = "NVARCHAR(255)")
+  @Column(nullable = false)
   private String name;
 
 }

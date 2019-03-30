@@ -1,0 +1,93 @@
+{
+  "coords": [
+    30.2976308,
+    59.9607433
+  ],
+  "userID": "99999999",
+  "groups": {
+    "count": 8,
+    "items": [
+      {
+        "id": 33393308,
+        "name": "Стартапы и бизнес",
+        "screen_name": "vcru",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-25.userapi.com/c627624/v627624388/2decd/oBQ44T8CRHI.jpg?ava=1",
+        "photo_100": "https://sun1-14.userapi.com/c627624/v627624388/2decc/wmDY4pK3Ous.jpg?ava=1",
+        "photo_200": "https://sun1-4.userapi.com/c627624/v627624388/2deca/7H_UNsHmTQ4.jpg?ava=1"
+      },
+      {
+        "id": 63731512,
+        "name": "Vandrouki | Путешествия почти бесплатно (RU)",
+        "screen_name": "vandroukiru",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-25.userapi.com/c849020/v849020873/1072e3/OOVDBNC3rek.jpg?ava=1",
+        "photo_100": "https://sun1-3.userapi.com/c849020/v849020873/1072e2/B19B-nNc7Z8.jpg?ava=1",
+        "photo_200": "https://sun1-21.userapi.com/c849020/v849020873/1072e1/Ra59s6WHJe8.jpg?ava=1"
+      },
+      {
+        "id": 58939492,
+        "name": "Подслушано ИТМО",
+        "screen_name": "overhearitmo",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-4.userapi.com/c845419/v845419841/14cb3/v3XwgzvKe7s.jpg?ava=1",
+        "photo_100": "https://sun1-19.userapi.com/c845419/v845419841/14cb2/GoyorgDA4WY.jpg?ava=1",
+        "photo_200": "https://sun1-22.userapi.com/c845419/v845419841/14cb1/QbtwIlijr0w.jpg?ava=1"
+      },
+      {
+        "id": 45636106,
+        "name": "Кронверкские барсы | Университет ИТМО",
+        "screen_name": "kronbars",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-5.userapi.com/c844720/v844720287/188351/dczYMrTWNpk.jpg?ava=1",
+        "photo_100": "https://sun1-3.userapi.com/c844720/v844720287/188350/injsDl9PfBs.jpg?ava=1",
+        "photo_200": "https://sun1-29.userapi.com/c844720/v844720287/18834f/mErAQCA7FUs.jpg?ava=1"
+      },
+      {
+        "id": 2499902,
+        "name": "ITMO.STUDENTS",
+        "screen_name": "itmostudents",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-83.userapi.com/c852016/v852016560/b536d/xbmY7fu79r8.jpg?ava=1",
+        "photo_100": "https://sun1-17.userapi.com/c852016/v852016560/b536c/15EnbwTSxA4.jpg?ava=1",
+        "photo_200": "https://sun1-23.userapi.com/c852016/v852016560/b536b/qOEUQAbpP7s.jpg?ava=1"
+      },
+      {
+        "id": 43157549,
+        "name": "IT-Events",
+        "screen_name": "iteventscom",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-30.userapi.com/c638030/v638030634/38ce3/vaBda1TkwXo.jpg?ava=1",
+        "photo_100": "https://sun1-21.userapi.com/c638030/v638030634/38ce2/bGTbTG2je0k.jpg?ava=1",
+        "photo_200": "https://sun1-14.userapi.com/c638030/v638030634/38ce1/vsf08RvKnsQ.jpg?ava=1"
+      },
+      {
+        "id": 41603819,
+        "name": "Dell EMC Academic Alliance Russia & CIS",
+        "screen_name": "dellemcacademicsrus",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://pp.userapi.com/c836320/v836320706/2174/5hA78Lu-JCc.jpg?ava=1",
+        "photo_100": "https://pp.userapi.com/c836320/v836320706/2173/WsLd5zUlNHI.jpg?ava=1",
+        "photo_200": "https://pp.userapi.com/c836320/v836320706/2171/D1x-wRkqY2g.jpg?ava=1"
+      },
+      {
+        "id": 71741545,
+        "name": "Google Россия",
+        "screen_name": "googlerussia",
+        "is_closed": 0,
+        "type": "page",
+        "photo_50": "https://sun1-21.userapi.com/c851528/v851528297/1072b/QoKRG6oSwDU.jpg?ava=1",
+        "photo_100": "https://sun1-25.userapi.com/c851528/v851528297/1072a/KRDakG7xOK4.jpg?ava=1",
+        "photo_200": "https://sun1-27.userapi.com/c851528/v851528297/10729/WmFVTc0tSRY.jpg?ava=1"
+      }
+    ]
+  },
+  "locationID": 1
+}

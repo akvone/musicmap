@@ -1,15 +1,14 @@
 package com.akvone.service;
 
-import com.akvone.dto.LocationStatistics;
-import com.akvone.entity.HistoryRecord;
-import com.akvone.entity.Location;
-import com.akvone.entity.Song;
-import com.akvone.entity.User;
+import com.akvone.dto.LocationStatisticsDto;
+import com.akvone.entity.GroupEntity;
+import com.akvone.entity.LocationEntity;
+import com.akvone.entity.UserEntity;
 
 public interface HistoryRecordService {
 
-  HistoryRecord add(User user, Song song, Location location);
+  void addIfNotExist(UserEntity userEntity, GroupEntity group, LocationEntity locationEntity);
 
-  LocationStatistics getLocationStatistics(long locationId);
+  LocationStatisticsDto getLocationStatistics(long locationId);
 
 }

@@ -1,9 +1,8 @@
 package com.akvone.service;
 
-import com.akvone.entity.User;
+import com.akvone.entity.UserEntity;
 
 public interface UserService {
 
-  User add(Long vkId, float x, float y);
-
+  UserEntity createOrUpdate(Long vkId, double[] coordinates);
 }

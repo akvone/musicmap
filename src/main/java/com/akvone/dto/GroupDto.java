@@ -8,15 +8,15 @@ import lombok.ToString;
 @Getter
 @Setter
 @ToString
-public class JSONSong {
+public class GroupDto {
 
-  @JsonProperty("aid")
+  @JsonProperty("id")
   private Long id;
 
-  @JsonProperty("artist")
-  private String singer;
+  @JsonProperty("name")
+  private String name;
 
-  @JsonProperty("genre")
-  private String styleName;
+  @JsonProperty("screen_name")
+  private String screenName;
 
 }

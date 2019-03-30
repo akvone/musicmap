@@ -1,11 +1,13 @@
 package com.akvone.service.impl;
 
-import com.akvone.dao.HistoryRecordDAO;
-import com.akvone.dto.LocationStatistics;
-import com.akvone.entity.HistoryRecord;
-import com.akvone.entity.Location;
-import com.akvone.entity.Song;
-import com.akvone.entity.User;
+import static java.util.stream.Collectors.toList;
+
+import com.akvone.dao.HistoryRecordRepository;
+import com.akvone.dto.LocationStatisticsDto;
+import com.akvone.entity.GroupEntity;
+import com.akvone.entity.HistoryRecordEntity;
+import com.akvone.entity.LocationEntity;
+import com.akvone.entity.UserEntity;
 import com.akvone.service.HistoryRecordService;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -17,27 +19,35 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class HistoryRecordServiceImpl implements HistoryRecordService {
 
-  private final HistoryRecordDAO historyRecordDAO;
+  private final HistoryRecordRepository historyRecordRepository;
 
   @Override
-  public HistoryRecord add(User user, Song song, Location location) {
-    if (!historyRecordDAO.exists(user, song)) {
-      HistoryRecord historyRecord = new HistoryRecord();
-      historyRecord.setUser(user);
-      historyRecord.setSong(song);
-      historyRecord.setLocation(location);
-      historyRecordDAO.save(historyRecord);
+  public void addIfNotExist(UserEntity userEntity, GroupEntity groupEntity, LocationEntity locationEntity) {
+    if (!historyRecordRepository.existsByUserAndGroup(userEntity, groupEntity)) {
+      save(userEntity, groupEntity, locationEntity);
     }
-    return historyRecordDAO.getByUserAndSong(user, song);
+  }
+
+  private void save(UserEntity userEntity, GroupEntity groupEntity, LocationEntity locationEntity) {
+    HistoryRecordEntity historyRecord = new HistoryRecordEntity();
+    historyRecord.setUser(userEntity);
+    historyRecord.setGroup(groupEntity);
+    historyRecord.setLocation(locationEntity);
+
+    historyRecordRepository.save(historyRecord);
   }
 
   @Override
   @Transactional
-  public LocationStatistics getLocationStatistics(long locationId) {
-    Long userCount = historyRecordDAO.getUserCountByLocationId(locationId);
-    List<String> topStyles = historyRecordDAO.getTopStylesByLocation(locationId);
+  public LocationStatisticsDto getLocationStatistics(long locationId) {
+    int userCount = historyRecordRepository.countUsersByLocation(locationId);
+    List<HistoryRecordEntity> topStyles = historyRecordRepository.findByLocationId(locationId);
 
-    return new LocationStatistics(userCount, topStyles);
+    List<String> groupNames = topStyles.stream()
+        .map(e -> e.getGroup().getName())
+        .collect(toList());
+
+    return new LocationStatisticsDto(userCount, groupNames);
   }
 
 }

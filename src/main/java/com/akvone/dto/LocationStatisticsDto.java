@@ -8,9 +8,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @AllArgsConstructor
-public class LocationStatistics {
+public class LocationStatisticsDto {
 
-  private long userCount;
+  private int userCount;
 
   private List<String> topStyles;
 }

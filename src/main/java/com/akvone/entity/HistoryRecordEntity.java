@@ -2,8 +2,8 @@ package com.akvone.entity;
 
 import java.io.Serializable;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
@@ -13,27 +13,28 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "HISTORY", schema = "musicDB", catalog = "")
-@IdClass(HistoryRecordPK.class)
+@Table(name = "history_records", schema = "musicDB")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class HistoryRecord implements Serializable {
-
-  public HistoryRecord(HistoryRecordPK historyRecordPK) {
-    song = historyRecordPK.getSong();
-    user = historyRecordPK.getUser();
-  }
+public class HistoryRecordEntity implements Serializable {
 
   @Id
-  private User user;
+  @GeneratedValue
+  private Long id;
+
+  @ManyToOne
+  @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+  private UserEntity user;
+
+  @ManyToOne
+  @JoinColumn(name = "group_id", referencedColumnName = "id", nullable = false)
+  private GroupEntity group;
 
   @ManyToOne
   @JoinColumn(name = "location_id", referencedColumnName = "id", nullable = false)
-  private Location location;
+  private LocationEntity location;
 
-  @Id
-  private Song song;
 
 }

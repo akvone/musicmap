@@ -1,9 +1,9 @@
 package com.akvone.service;
 
-import com.akvone.entity.Location;
+import com.akvone.entity.LocationEntity;
 
 public interface LocationService {
 
-  Location getById(Long id);
+  LocationEntity get(Long id);
 
 }

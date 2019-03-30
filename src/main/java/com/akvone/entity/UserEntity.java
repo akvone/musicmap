@@ -12,19 +12,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "LOCATIONS", schema = "musicDB", catalog = "")
+@Table(name = "users", schema = "musicDB")
 @Getter
 @Setter
 @EqualsAndHashCode
 @NoArgsConstructor
-public class Location implements Serializable {
+public class UserEntity implements Serializable {
 
   @Id
-  @Column(name = "id", nullable = false)
   private Long id;
 
   @Basic
-  @Column(name = "name", nullable = false)
-  private String name;
+  @Column(name = "x_coord")
+  private double x;
+
+  @Basic
+  @Column(name = "y_coord")
+  private double y;
 
 }
