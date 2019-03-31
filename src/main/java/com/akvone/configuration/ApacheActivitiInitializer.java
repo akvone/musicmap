@@ -1,14 +1,14 @@
 package com.akvone.configuration;
 
 import lombok.RequiredArgsConstructor;
-import org.activiti.engine.ProcessEngine;
-import org.activiti.engine.RuntimeService;
+import org.activiti.engine.*;
 import org.activiti.spring.ProcessEngineFactoryBean;
 import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 
+import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
 
 @Configuration
@@ -18,8 +18,28 @@ public class ApacheActivitiInitializer {
   private final DataSource dataSource;
 
   @Bean
+  public RepositoryService repositoryService() {
+    return processEngine().getRepositoryService();
+  }
+
+  @Bean
   public RuntimeService runtimeService() {
     return processEngine().getRuntimeService();
+  }
+
+  @Bean
+  public TaskService taskService() {
+    return processEngine().getTaskService();
+  }
+
+  @Bean
+  public HistoryService historyService() {
+    return processEngine().getHistoryService();
+  }
+
+  @Bean
+  public ManagementService managementService() {
+    return processEngine().getManagementService();
   }
 
   @Bean
@@ -34,7 +54,7 @@ public class ApacheActivitiInitializer {
 
   @Bean
   public ProcessEngine processEngine() {
-    ProcessEngineFactoryBean processEngineFactory = new ProcessEngineFactoryBean();
+    ProcessEngineFactoryBean processEngineFactory = processEngineFactoryBean();
     processEngineFactory.setProcessEngineConfiguration(processEngineConfiguration());
     try {
       return processEngineFactory.getObject();
@@ -44,9 +64,24 @@ public class ApacheActivitiInitializer {
   }
 
   @Bean
+  public ProcessEngineFactoryBean processEngineFactoryBean() {
+    return new ProcessEngineFactoryBean();
+  }
+
+  @Bean
   public DataSourceTransactionManager transactionManager() {
     DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
     transactionManager.setDataSource(dataSource);
     return transactionManager;
+  }
+
+  @PostConstruct
+  public void initProcesses() {
+    RepositoryService repositoryService = repositoryService();
+    repositoryService
+            .createDeployment()
+            .addClasspathResource("processes/aplicant.bpmn20.xml")
+            .deploy()
+            .getId();
   }
 }

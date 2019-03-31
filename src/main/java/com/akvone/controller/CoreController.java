@@ -30,6 +30,7 @@ public class CoreController {
 
   @GetMapping("/start")
   public String sendStartPage() {
+    runtimeService.startProcessInstanceByKey("sendApplicant");
     return "start";
   }
 
