@@ -42,7 +42,7 @@ public class CoreController {
 
   @GetMapping("/regStat")
   public ResponseEntity<LocationStatisticsDto> getLocationStatistics(@RequestParam("locationId") Long locationId) {
-    log.debug("Get request on info by {} location", locationId);
+    log.debug("Get request on info for {} location", locationId);
 
     LocationStatisticsDto stat = historyRecordService.getLocationStatistics(locationId);
 
