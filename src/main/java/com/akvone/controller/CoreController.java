@@ -6,6 +6,7 @@ import com.akvone.service.HistoryRecordService;
 import com.akvone.service.CoreService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.activiti.engine.RuntimeService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -25,6 +26,7 @@ public class CoreController {
 
   private final HistoryRecordService historyRecordService;
   private final CoreService coreService;
+  private final RuntimeService runtimeService;
 
   @GetMapping("/start")
   public String sendStartPage() {
