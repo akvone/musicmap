@@ -1,11 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.activiti.org/processdef" xmlns:modeler="http://activiti.com/modeler" modeler:version="1.0en" modeler:exportDateTime="20150216104339475" modeler:modelId="933057" modeler:modelVersion="3" modeler:modelLastUpdated="1424083415708">
   <signal id="cancelApplication" name="cancelApplication"/>
-  <process id="sendApplicant" name="Developer Hiring" isExecutable="true">
+  <process id="regStat" name="Get group statistic" isExecutable="true">
     <sequenceFlow sourceRef="StartEvent_1" targetRef="ServiceTask_1"
                   id="StartEvent_1-ServiceTask_1"/>
-    <serviceTask id="ServiceTask_1" name="Handle applicant"
-                 activiti:expression="${helloWorld.greet(name)}"/>
+    <serviceTask id="ServiceTask_1" name="Get location statistics"
+                 activiti:expression="#{historyRecordServiceImpl.getLocationStatistics(locationId)}"
+                 activiti:resultVariable="stat"/>
 
     <startEvent id="StartEvent_1" name="Start Event 1"/>
   </process>

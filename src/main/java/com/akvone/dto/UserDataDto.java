@@ -1,6 +1,8 @@
 package com.akvone.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.io.Serializable;
 import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -14,7 +16,7 @@ import lombok.ToString;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDataDto {
+public class UserDataDto implements Serializable {
 
   @JsonProperty("userID")
   @NonNull

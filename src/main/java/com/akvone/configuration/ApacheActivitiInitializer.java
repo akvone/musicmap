@@ -80,7 +80,8 @@ public class ApacheActivitiInitializer {
     RepositoryService repositoryService = repositoryService();
     repositoryService
             .createDeployment()
-            .addClasspathResource("processes/aplicant.bpmn20.xml")
+            .addClasspathResource("processes/regstat.bpmn20.xml")
+            .addClasspathResource("processes/add_user.bpmn20.xml")
             .deploy()
             .getId();
   }
