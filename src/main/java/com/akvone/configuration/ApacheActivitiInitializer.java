@@ -7,6 +7,7 @@ import org.activiti.spring.SpringProcessEngineConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.annotation.PostConstruct;
 import javax.sql.DataSource;
@@ -16,6 +17,7 @@ import javax.sql.DataSource;
 public class ApacheActivitiInitializer {
 
   private final DataSource dataSource;
+  private final PlatformTransactionManager transactionManager;
 
   @Bean
   public RepositoryService repositoryService() {
@@ -46,7 +48,8 @@ public class ApacheActivitiInitializer {
   public SpringProcessEngineConfiguration processEngineConfiguration() {
     SpringProcessEngineConfiguration conf = new SpringProcessEngineConfiguration();
     conf.setDataSource(dataSource);
-    conf.setTransactionManager(transactionManager());
+    conf.setTransactionManager(transactionManager);
+    // conf.setTransactionManager(transactionManager());
     conf.setDatabaseSchemaUpdate("true");
     conf.setAsyncExecutorActivate(false);
     return conf;
@@ -66,13 +69,6 @@ public class ApacheActivitiInitializer {
   @Bean
   public ProcessEngineFactoryBean processEngineFactoryBean() {
     return new ProcessEngineFactoryBean();
-  }
-
-  @Bean
-  public DataSourceTransactionManager transactionManager() {
-    DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
-    transactionManager.setDataSource(dataSource);
-    return transactionManager;
   }
 
   @PostConstruct
