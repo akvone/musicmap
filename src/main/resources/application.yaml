@@ -4,7 +4,7 @@ server:
 DB_ADDRESS: "localhost"
 DB_PORT: "3306"
 DB_USER: "root"
-DB_PASSWORD: "password"
+DB_PASSWORD: "root"
 
 spring:
   resources:
@@ -14,7 +14,7 @@ spring:
       prefix: /
       suffix: .html
   datasource:
-    url: jdbc:mysql://${DB_ADDRESS}:${DB_PORT}/musicDB?useUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://${DB_ADDRESS}:${DB_PORT}/musicDB?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC
     username: ${DB_USER}
     password: ${DB_PASSWORD}
   jpa:

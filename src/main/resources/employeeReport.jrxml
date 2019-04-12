@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="employeeReport" pageWidth="612" pageHeight="792" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+    <parameter name="title" class="java.lang.String" isForPrompting="false"/>
+    <queryString>
+		<![CDATA[
+		    SELECT distinct name, location_id as id
+            FROM locations l
+            inner join history_records h
+            on l.id = h.location_id;
+        ]]>
+    </queryString>
+    <field name="ID" class="java.lang.Integer"/>
+    <field name="NAME" class="java.lang.String"/>
+    <title>
+        <band height="50" splitType="Stretch">
+            <textField>
+                <reportElement x="10" y="0" width="600" height="50"/>
+                <textElement textAlignment="Center">
+                    <font fontName="Tahoma" size="30"/>
+                </textElement>
+                <!--<textFieldExpression class="java.lang.String"><![CDATA[$P{title}]]></textFieldExpression>-->
+                <textFieldExpression class="java.lang.String"><![CDATA[ "Топ 5 групп среди районов СПб" ]]></textFieldExpression>
+            </textField>
+        </band>
+    </title>
+    <detail>
+        <band height="65" splitType="Stretch">
+            <!--<textField>-->
+                <!--<reportElement x="0" y="0" width="300" height="30"/>-->
+                <!--<textElement>-->
+                    <!--<font fontName="Tahoma"/>-->
+                <!--</textElement>-->
+                <!--<textFieldExpression class="java.lang.String"><![CDATA[$F{NAME}]]></textFieldExpression>-->
+            <!--</textField>-->
+
+            <subreport>
+                <reportElement x="0" y="0" width="300" height="25"/>
+                <subreportParameter name="idLocation">
+                    <subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA["locationNameReport.jasper"]]></subreportExpression>
+            </subreport>
+           <subreport>
+                <reportElement x="0" y="25" width="300" height="20"/>
+                <subreportParameter name="idLocation">
+                    <subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA["votesNumberReport.jasper"]]></subreportExpression>
+            </subreport>
+            <subreport>
+                <reportElement x="0" y="45" width="300" height="20"/>
+                <subreportParameter name="idLocation">
+                    <subreportParameterExpression><![CDATA[$F{ID}]]></subreportParameterExpression>
+                </subreportParameter>
+                <connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+                <subreportExpression class="java.lang.String"><![CDATA["employeeEmailReport.jasper"]]></subreportExpression>
+            </subreport>
+        </band>
+    </detail>
+</jasperReport>
